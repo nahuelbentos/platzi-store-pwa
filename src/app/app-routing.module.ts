@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import { LayoutComponent } from './layout/layout.component';
+
 
 import { AdminGuard } from './admin.guard';
+import { LayoutComponent } from './layout/components/layout.component';
 
 const routes: Routes = [
   {
@@ -35,12 +36,24 @@ const routes: Routes = [
         path: 'demo',
         loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
       },
+      {
+        path: 'login',
+        loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+      },
+      {
+        path: 'register',
+        loadChildren: () => import('./register/register.module').then(m => m.RegisterModule),
+      },
     ]
   },
   {
     path: 'admin',
     canActivate: [AdminGuard],
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+  },
+  {
+    path: 'acu',
+    loadChildren: () => import('./acu/acu.module').then(m => m.AcuModule),
   },
   {
     path: 'auth',
@@ -48,8 +61,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
-  },
+    loadChildren: () => import('./error/error.module').then(m => m.ErrorModule),
+  }
 ];
 
 @NgModule({

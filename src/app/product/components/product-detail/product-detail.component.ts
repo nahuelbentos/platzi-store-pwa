@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-
-import { ProductsService } from './../../../core/services/products/products.service';
-import { Product } from './../../../core/models/product.model';
+import { ProductsService } from '@core/services/products/products.service';
+import { Product } from '@core/model/product.model';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,8 +12,8 @@ import { Product } from './../../../core/models/product.model';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-
   product: Product;
+  product$: Observable<Product>;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,50 +21,84 @@ export class ProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      const id = params.id;
-      this.fetchProduct(id);
-      // this.product = this.productsService.getProduct(id);
-    });
+    this.product$ = this.route.params
+      .pipe(
+        switchMap((params: Params) => {
+          return this.productsService.getProduct(params.id);
+        })
+      );
+
+
   }
 
   fetchProduct(id: string) {
     this.productsService.getProduct(id)
-    .subscribe(product => {
-      this.product = product;
-    });
+      .subscribe(product => {
+        console.log(product);
+        this.product = product;
+      });
   }
 
-  createProduct() {
+  createProduct(product: Product) {
     const newProduct: Product = {
       id: '222',
       title: 'nuevo desde angular',
       image: 'assets/images/banner-1.jpg',
-      price: 3000,
-      description: 'nuevo producto'
+      price: 3500,
+      description: 'Nuevo producto pa buena '
     };
+
     this.productsService.createProduct(newProduct)
-    .subscribe(product => {
-      console.log(product);
-    });
+      .subscribe(res => {
+        console.log('OK!!');
+        console.log(res);
+      });
   }
 
-  updateProduct() {
-    const updateProduct: Partial<Product> = {
-      price: 555555,
-      description: 'edicion titulo'
+  updateProduct(id: string, changes: Partial<Product>) {
+    const updateroduct: Partial<Product> = {
+      price: 546464631356,
+      description: 'edito producto pa buena '
     };
-    this.productsService.updateProduct('2', updateProduct)
-    .subscribe(product => {
-      console.log(product);
-    });
+
+    this.productsService.updateProduct('2', updateroduct)
+      .subscribe(res => {
+        console.log('OK!!');
+        console.log(res);
+      });
   }
 
-  deleteProduct() {
+  deleteProduct(id: string) {
+
     this.productsService.deleteProduct('222')
-    .subscribe(rta => {
-      console.log(rta);
-    });
+      .subscribe(res => {
+        console.log('OK!!');
+        console.log(res);
+      });
+  }
+
+  getRandomUsers() {
+    this.productsService.getRandomUsers()
+      .subscribe(
+        users => { // ok
+          console.log(users);
+        },
+        error => {
+          console.error(error);
+        }
+      );
+  }
+
+  getFile() {
+
+    // window.open('http://192.1.0.71/ACU_Web.NetEnvironment_Prototipo/atestpdf.aspx', '_blank');
+
+    this.productsService.getFile()
+      .subscribe(content => {
+        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+        FileSaver.saveAs(blob, 'content.txt');
+
+      });
   }
 
 }

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ContactComponent } from './components/contact/contact.component';
-
+import { SharedModule } from '@shared/shared.module';
 import { ContactRoutingModule } from './contact-routing.module';
-import { SharedModule } from './../shared/shared.module';
+import { ContactComponent } from './components/contact.component';
+
+
 
 @NgModule({
   declarations: [
-    ContactComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,
@@ -16,6 +16,7 @@ import { SharedModule } from './../shared/shared.module';
     ContactRoutingModule
   ]
 })
-export class ContactModule {
+export class ContactModule { }
 
-}
+
+

@@ -2,25 +2,25 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { ProductsComponent } from './components/products/products.component';
+import { ProductsContainer } from './containers/products/products.container';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ProductsComponent
-  },
-  {
-    path: ':id',
-    component: ProductDetailComponent
-  }
+    {
+        path: '',
+        component: ProductsContainer
+    },
+    {
+        path: ':id',
+        component: ProductDetailComponent
+    }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes),
-  ],
-  exports: [
-    RouterModule
-  ]
+    imports: [
+        RouterModule.forChild(routes),
+    ],
+    exports: [
+        RouterModule
+    ]
 })
-export class ProductRoutingModule {}
+export class ProductRoutingModule { }

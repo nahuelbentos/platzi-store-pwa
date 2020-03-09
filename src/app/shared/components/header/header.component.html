@@ -1,21 +1,30 @@
-<mat-toolbar class="header-toolbar" color="primary">
-  <mat-toolbar-row>
-    <div class="container">
-      <div class="row between-xs middle-xs header-row">
-        <nav>
-          <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
-          <a mat-button routerLink="/products" routerLinkActive="active"
-            >Products</a
-          >
-          <a mat-button routerLink="/contact" routerLinkActive="active"
-            >Contact</a
-          >
-        </nav>
-        <a routerLink="/order" mat-raised-button [matBadge]="total$ | async" matBadgeColor="warn">
-          <mat-icon>shopping_cart</mat-icon>
-          Carrito
-        </a>
-      </div>
-    </div>
-  </mat-toolbar-row>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <div class="row between-xs middle-xs header-row">
+            <nav>
+                <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+                <a mat-button routerLink="/products" routerLinkActive="active">Products</a>
+                <a mat-button routerLink="/contact" routerLinkActive="active">Contact</a>
+            </nav>
+            <div class="row">
+                <a mat-raised-button routerLink="/order" [matBadge]="(total$ | async).toString()" matBadgeColor="warn"
+                    class="a-margin">
+                    <mat-icon>shopping_cart
+                    </mat-icon>
+                    Carrito
+                </a>
+                <a mat-raised-button routerLink="/register" color="primary" class="a-margin">
+                    Register
+                    <mat-icon>add_circle_outline
+                    </mat-icon>
+                </a>
+                <a mat-raised-button routerLink="/login" color="primary" class="a-margin">
+                    Log in
+                    <mat-icon>arrow_forward_ios
+                    </mat-icon>
+                </a>
+            </div>
+        </div>
+
+    </mat-toolbar-row>
 </mat-toolbar>

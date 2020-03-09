@@ -5,17 +5,29 @@
 export const environment = {
   production: false,
   url_api: 'https://platzi-store.herokuapp.com',
+  url_ws: 'http://192.1.0.71/ACU_WS.NetEnvironment/rest',
+  url_soap: 'http://192.1.0.71/ACU_WS.NetEnvironment/',
   firebase: {
-    apiKey: 'AIzaSyDYrnAORATRygACacyOwg1GdGidn8wRyJw',
-    authDomain: 'platzi-store-f4261.firebaseapp.com',
-    databaseURL: 'https://platzi-store-f4261.firebaseio.com',
-    projectId: 'platzi-store-f4261',
-    storageBucket: 'platzi-store-f4261.appspot.com',
-    messagingSenderId: '726188212196',
-    appId: '1:726188212196:web:a0b4e737ec563410'
+    apiKey: 'AIzaSyDASAzo60dHc7rH1vR6jxzmtP_IoOSb58I',
+    authDomain: 'platzi-store-139e7.firebaseapp.com',
+    databaseURL: 'https://platzi-store-139e7.firebaseio.com',
+    projectId: 'platzi-store-139e7',
+    storageBucket: 'platzi-store-139e7.appspot.com',
+    messagingSenderId: '81982978238',
+    appId: '1:81982978238:web:76e170fade21a24ff986ef'
   }
 };
+/*
 
+Url api desarrollo SQLServer:
+  url_ws: 'http://192.1.0.86/ACU_WS.NetEnvironment/rest',
+  url_soap: 'http://192.1.0.86/ACU_WS.NetEnvironment/',
+URL api prod Oracle:
+
+  url_ws: 'http://192.1.0.71/ACU_Web.NetEnvironment/rest',
+  url_soap: 'http://192.1.0.71/ACU_Web.NetEnvironment/',
+
+*/
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
