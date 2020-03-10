@@ -27,8 +27,8 @@
                 <div class="col">
                     <mat-form-field class="full-width">
 
-                        <input matInput [matDatepicker]="picker" placeholder="Fecha" [value]="fechaClase"
-                            formControlName="fechaClase" disabled>
+                        <input matInput [matDatepicker]="picker" placeholder="Fecha" [value]="fechaClaseStr"
+                            formControlName="fechaClaseStr" disabled>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Número de Movil" [value]="movil" disabled>
+                        <input matInput placeholder="Número de Movil" [value]="movilStr" disabled>
                         <!-- formControlName="movil" -->
                     </mat-form-field>
                 </div>
@@ -128,7 +128,7 @@
                 </div>
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Nº de Clase Práctica" [value]="agendaClase.EsAgCuNroCla"
+                        <input matInput placeholder="Nº de Clase Práctica" [value]="EsAgCuNroClaStr"
                             formControlName="numeroClase">
                     </mat-form-field>
                 </div>

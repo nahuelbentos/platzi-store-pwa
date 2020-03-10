@@ -61,10 +61,13 @@ export class AgendarClaseComponent implements OnInit {
   agendaClase: AgendaClase;
   hora: Date = new Date();
   fechaClase: Date = new Date();
+  fechaClaseStr;
   movil: number;
+  movilStr;
   instructorAsignado = '';
   curso: string;
   hoy = new Date();
+  EsAgCuNroClaStr;
 
   // para el dialog
   alumno: any;

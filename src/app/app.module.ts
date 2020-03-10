@@ -7,6 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +40,8 @@ import { LicenciaInstructorValidatorDirective } from './utils/validators/licenci
 import { InstructorYaAsignadoValidatorDirective } from './utils/validators/instructor-ya-asignado-validator.directive';
 import { AlumnoTieneExcepecionValidatorDirective } from './utils/validators/alumno-tiene-excepecion.directive';
 import { AlumnoYaAsignadoValidatorDirective } from './utils/validators/alumno-ya-asignado.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 
 // if (environment.production === true) {
 Sentry.init({
@@ -67,11 +72,14 @@ Sentry.init({
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
+    AngularFireMessagingModule,
+    AngularFirestoreModule,
     AcuModule,
     MaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
     NgxSoapModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
   ],
   providers: [
